@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #ccc;
+            font-family: 'Courier New', Courier, monospace;
+            line-height: 1.6;
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .terminal {
+            width: 100%;
+            max-width: 800px;
+            text-align: left;
+        }
+
+        .line {
+            margin: 5px 0;
+        }
+
+        .system {
+            color: #d1aaff;
+        }
+
+        .time {
+            background-color: #333;
+            padding: 2px 4px;
+            border-radius: 3px;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .done {
+            color: #7cff7c;
+        }
+
+        .prompt {
+            color: #4fc3f7;
+        }
+    </style>
+</head>
+<body>
+    <div class="terminal">
+        <div class="line"><span class="system">System</span> cd /About</div>
+        <div class="line"><span class="system">System</span> Thanks for your visit, let me introduce myself.</div>
+        <div class="line"><span class="time" id="current-time">22:29:39</span> <span class="system">Name:</span> Nolan (Nuo, Xu)</div>
+        <div class="line"><span class="time" id="current-time-2">22:29:39</span> <span class="system">University:</span> New York University Shanghai</div>
+        <div class="line"><span class="time" id="current-time-3">22:29:39</span> <span class="system">Major:</span> Computer Science & Data Science</div>
+        <div class="line"><span class="time" id="current-time-4">22:29:39</span> <span class="system">Year:</span> Freshman</div>
+        <div class="line"><span class="time" id="current-time-5">22:29:39</span> <span class="system">Skills:</span> Python, Vibe Coding, Git, Cursor</div>
+        <div class="line"><span class="time" id="current-time-6">22:29:39</span> <span class="system">Interests:</span> AI Development, Open Source, Karting</div>
+        <div class="line"><span class="done">Done</span> Myself introduction is over!</div>
+        <!-- Removed the original three command lines -->
+        <div class="line"><span class="prompt">→</span> About</div>
+    </div>
+
+    <script>
+        // Update time every second
+        function updateTime() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString('en-US', { hour12: false });
+            document.getElementById('current-time').textContent = timeString;
+            document.getElementById('current-time-2').textContent = timeString;
+            document.getElementById('current-time-3').textContent = timeString;
+            document.getElementById('current-time-4').textContent = timeString;
+            document.getElementById('current-time-5').textContent = timeString;
+            document.getElementById('current-time-6').textContent = timeString;
+            document.getElementById('current-time-7').textContent = timeString;
+        }
+
+        setInterval(updateTime, 1000);
+        updateTime(); // Initial call
+    </script>
+</body>
+</html>
