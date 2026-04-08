@@ -1,196 +1,468 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Me</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #000;
-            color: #ccc;
-            font-family: 'Courier New', Courier, monospace;
-            line-height: 1.6;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            padding: 20px;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nolan Xu — About</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-        .terminal {
-            width: 100%;
-            max-width: 800px;
-            text-align: left;
-        }
+  <style>
+    :root {
+      --cream:   #faf8f4;
+      --white:   #ffffff;
+      --ink:     #1c1c1e;
+      --charcoal:#3a3a3c;
+      --muted:   #8e8e93;
+      --line:    #e5e2da;
+      --blue:    #2563eb;
+      --blue-lt: #eff4ff;
+      --teal:    #0d9488;
+      --teal-lt: #f0fdfb;
+      --amber:   #d97706;
+      --amber-lt:#fffbeb;
+      --serif:   'DM Serif Display', Georgia, serif;
+      --sans:    'DM Sans', system-ui, sans-serif;
+      --mono:    'DM Mono', monospace;
+    }
 
-        .line {
-            margin: 5px 0;
-        }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
 
-        .system {
-            color: #d1aaff;
-        }
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
 
-        .time {
-            background-color: #333;
-            padding: 2px 4px;
-            border-radius: 3px;
-            color: #fff;
-            font-weight: bold;
-        }
+    .page { max-width: 780px; margin: 0 auto; padding: 0 24px 100px; }
 
-        .done {
-            color: #7cff7c;
-        }
+    /* ── Hero ── */
+    .hero {
+      padding: 72px 0 52px;
+      border-bottom: 1.5px solid var(--line);
+      animation: rise 0.7s cubic-bezier(0.22,1,0.36,1) both;
+    }
+    @keyframes rise {
+      from { opacity:0; transform:translateY(20px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
 
-        .prompt {
-            color: #4fc3f7;
-        }
+    .hero-eyebrow {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 28px; height: 1.5px;
+      background: var(--blue);
+    }
 
-        /* 新增样式：用于 Markdown 转换后的元素 */
-        .markdown-text {
-            color: #ccc;
-        }
+    .hero-name {
+      font-family: var(--serif);
+      font-size: clamp(2.8rem, 7vw, 4.4rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 18px;
+    }
+    .hero-name em { font-style: italic; color: var(--blue); }
 
-        .markdown-text p {
-            margin: 0.5em 0;
-        }
+    .hero-tagline {
+      font-size: 1.05rem;
+      color: var(--charcoal);
+      font-weight: 300;
+      margin-bottom: 30px;
+      max-width: 520px;
+      line-height: 1.7;
+    }
+    .hero-tagline strong { color: var(--ink); font-weight: 500; }
 
-        .markdown-text hr {
-            border: none;
-            border-top: 1px solid #555;
-            margin: 1em 0;
-        }
+    .hero-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 14px;
+      border-radius: 100px;
+      font-size: 0.78rem;
+      font-weight: 500;
+      border: 1px solid transparent;
+    }
+    .pill-blue  { background: var(--blue-lt);  color: var(--blue);  border-color: #bfcfff; }
+    .pill-teal  { background: var(--teal-lt);  color: var(--teal);  border-color: #99e6de; }
+    .pill-amber { background: var(--amber-lt); color: var(--amber); border-color: #fcd98a; }
 
-        .markdown-text ul {
-            padding-left: 20px;
-            margin: 0.5em 0;
-            list-style-type: disc; /* 一级列表 • */
-        }
+    /* ── Sections ── */
+    .section {
+      padding: 52px 0 0;
+      animation: rise 0.6s cubic-bezier(0.22,1,0.36,1) both;
+    }
+    .section:nth-child(2) { animation-delay: 0.07s; }
+    .section:nth-child(3) { animation-delay: 0.14s; }
+    .section:nth-child(4) { animation-delay: 0.21s; }
+    .section:nth-child(5) { animation-delay: 0.28s; }
+    .section:nth-child(6) { animation-delay: 0.35s; }
 
-        .markdown-text ul ul {
-            list-style-type: circle; /* 二级列表 ○ */
-        }
+    .section-label {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--line);
+    }
 
-        .markdown-text ul ul ul {
-            list-style-type: square; /* 三级列表 ▪ */
-        }
+    /* ── Skills ── */
+    .skills-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+    .skill-chip {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      padding: 7px 15px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      color: var(--charcoal);
+      transition: border-color 0.15s, color 0.15s, box-shadow 0.15s;
+      cursor: default;
+    }
+    .skill-chip:hover {
+      border-color: var(--blue);
+      color: var(--blue);
+      box-shadow: 0 2px 10px rgba(37,99,235,0.1);
+    }
 
-        .markdown-text li {
-            margin: 0.3em 0;
-        }
+    /* ── Cards ── */
+    .cards { display: grid; gap: 14px; }
+    .cards-2 { grid-template-columns: 1fr 1fr; }
+    .card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 22px 24px;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .card:hover {
+      box-shadow: 0 8px 30px rgba(0,0,0,0.07);
+      transform: translateY(-2px);
+    }
+    .card-icon { font-size: 1.4rem; margin-bottom: 10px; }
+    .card-title {
+      font-family: var(--serif);
+      font-size: 1.08rem;
+      margin-bottom: 8px;
+    }
+    .card-body {
+      font-size: 0.85rem;
+      color: var(--charcoal);
+      line-height: 1.7;
+      font-weight: 300;
+    }
+    .card-body ul { padding-left: 18px; margin-top: 8px; }
+    .card-body li { margin: 4px 0; }
+    .card-body strong { color: var(--ink); font-weight: 500; }
+    .card-accent-blue  { border-top: 3px solid var(--blue); }
+    .card-accent-teal  { border-top: 3px solid var(--teal); }
+    .card-accent-amber { border-top: 3px solid var(--amber); }
+    .card-span2 { grid-column: 1 / -1; }
 
-        .markdown-text blockquote {
-            color: #aaa;
-            border-left: 2px solid #555;
-            padding-left: 10px;
-            margin: 0.5em 0;
-        }
+    /* ── Callout ── */
+    .callout {
+      border-left: 3px solid var(--amber);
+      background: var(--amber-lt);
+      padding: 14px 20px;
+      border-radius: 0 8px 8px 0;
+      font-size: 0.87rem;
+      color: #92400e;
+      font-style: italic;
+      line-height: 1.7;
+      margin-top: 16px;
+    }
 
-        .markdown-text strong,
-        .markdown-text b {
-            font-weight: bold;
-            color: #fff;
-        }
+    /* ── Projects ── */
+    .projects { display: flex; flex-direction: column; gap: 6px; }
+    .proj {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 13px 18px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      text-decoration: none;
+      color: var(--ink);
+      transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
+    }
+    .proj:hover {
+      border-color: var(--blue);
+      box-shadow: 0 4px 18px rgba(37,99,235,0.09);
+      transform: translateX(4px);
+    }
+    .proj-num {
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      color: var(--muted);
+      width: 20px;
+      flex-shrink: 0;
+    }
+    .proj-name { font-weight: 500; font-size: 0.88rem; flex: 1; }
+    .proj-desc { font-size: 0.78rem; color: var(--muted); font-weight: 300; }
+    .proj-arrow { color: var(--line); font-size: 0.85rem; transition: color 0.15s; flex-shrink: 0; }
+    .proj:hover .proj-arrow { color: var(--blue); }
+    .badge {
+      font-family: var(--mono);
+      font-size: 0.58rem;
+      padding: 2px 7px;
+      border-radius: 4px;
+      flex-shrink: 0;
+    }
+    .badge-own  { background: var(--teal-lt);  color: var(--teal);  border: 1px solid #99e6de; }
+    .badge-fork { background: #f5f5f5; color: var(--muted); border: 1px solid var(--line); }
 
-        .markdown-text a {
-            color: #4fc3f7;
-            text-decoration: none;
-        }
-        .markdown-text a:hover {
-            text-decoration: underline;
-        }
+    .notice {
+      margin-top: 12px;
+      padding: 12px 18px;
+      background: var(--blue-lt);
+      border: 1px solid #bfcfff;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      color: var(--blue);
+    }
+    .notice strong { font-weight: 500; }
 
-        /* 保持终端行内样式兼容 */
-        .line .markdown-text {
-            display: block;
-        }
-    </style>
+    /* ── Philosophy ── */
+    .philosophy {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 28px 30px;
+    }
+    .philosophy p {
+      font-size: 0.97rem;
+      line-height: 1.82;
+      color: var(--charcoal);
+      font-weight: 300;
+      margin-bottom: 14px;
+    }
+    .philosophy p:last-child { margin-bottom: 0; }
+    .philosophy strong { color: var(--ink); font-weight: 500; }
+
+    /* ── Contact footer ── */
+    .contact-bar {
+      margin-top: 56px;
+      padding: 30px 32px;
+      background: var(--ink);
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .contact-heading {
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+    .contact-sub { font-size: 0.82rem; color: #8e8e93; font-weight: 300; }
+    .contact-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--white);
+      color: var(--ink);
+      text-decoration: none;
+      padding: 11px 22px;
+      border-radius: 100px;
+      font-weight: 500;
+      font-size: 0.88rem;
+      transition: background 0.15s, transform 0.15s;
+      white-space: nowrap;
+    }
+    .contact-btn:hover { background: #e8e8ec; transform: scale(1.03); }
+
+    @media (max-width: 580px) {
+      .cards-2 { grid-template-columns: 1fr; }
+      .card-span2 { grid-column: auto; }
+      .proj-desc { display: none; }
+      .contact-bar { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
 </head>
 <body>
-    <div class="terminal">
-        <div class="line"><span class="system">System</span> cd /About</div>
-        <div class="line"><span class="system">System</span> Thanks for your visit, let me introduce myself.</div>
-        <div class="line"><span class="time" id="current-time">22:29:39</span> <span class="system">Name:</span> Nolan (Nuo, Xu)</div>
-        <div class="line"><span class="time" id="current-time-2">22:29:39</span> <span class="system">University:</span> New York University Shanghai</div>
-        <div class="line"><span class="time" id="current-time-3">22:29:39</span> <span class="system">Major:</span> Computer Science & Data Science</div>
-        <div class="line"><span class="time" id="current-time-4">22:29:39</span> <span class="system">Year:</span> Freshman</div>
-        <div class="line"><span class="time" id="current-time-5">22:29:39</span> <span class="system">Skills:</span> Python, Vibe Coding, Git, Cursor</div>
-        <div class="line"><span class="time" id="current-time-6">22:29:39</span> <span class="system">Interests:</span> AI Development, Open Source, Karting</div>
-        <div class="line"><span class="done">Done</span> Myself introduction is over!</div>
-        <div class="line"><span class="prompt">→</span> About</div>
+<div class="page">
 
-        <!-- 插入的 Markdown 内容开始 -->
-        <div class="line">
-            <div class="markdown-text">
-                <p>你好 👋</p>
-                <hr>
-                <p>我是 Nolan Xu，纽约大学 29 届数据科学专业学生。</p>
-
-                <ul>
-                    <li>我熟悉 <strong>Python</strong>、<strong>C++</strong>、<strong>JavaScript</strong>、<strong>HTML</strong>、<strong>LaTeX</strong> 和 <strong>Markdown</strong>。（是的，我对 Markdown 和 LaTeX 非常熟悉，经常用这种方式做笔记。）</li>
-                    <li>我是一名业余的量化交易策略研究员和分析师（纯粹出于好奇，也确实做了一些东西，但别对我抱太大期望，哈哈），你可以看看我目前的进展：<strong>（未在 GitHub 上开源）</strong>
-                        <ul>
-                            <li>主流交易风格研究</li>
-                            <li>主要关注微型股的量化交易策略</li>
-                            <li>分别针对 IF 和 IH 的对冲策略</li>
-                            <li>微型股震荡（2024/01/15-2024/02/07）研究</li>
-                        </ul>
-                    </li>
-                    <li>我是一位技术爱好者，对数据处理充满热情，并致力于利用法学硕士学位和实用的计算机科学技能（比如 Git：<strong>git push --force</strong> 哈哈……）来探索各种可能性。
-                        <ul>
-                            <li>我曾经从 akshare 下载了完整的 A 股数据，并建立了一个带有数据清洗机制和及时更新功能的超级 SQL 表和数据库。</li>
-                            <li>我创新性地创建并运行了许多有趣的 GitHub 代码库，如下所示：
-                                <ul>
-                                    <li><a href="https://github.com/Nolan180940/Nolan180940.github.io">personal_homepage</a>，精心制作，欢迎访问。</li>
-                                    <li><a href="https://github.com/Nolan180940/md-to-word">markdown-to-docx_converter</a>，请参阅该代码库中的 README.md 文件。（感谢 streamlit.io）</li>
-                                    <li><a href="https://github.com/Nolan180940/blog">blog</a>，展示了一个完整的全栈开发流程，前端使用 Gemini 3 Pro（设计欠佳），后端使用 Supabase 云数据库。</li>
-                                    <li><a href="https://github.com/Nolan180940/Notebook">convenient_online_notebook</a>，即刻可用，支持导出为任何格式。</li>
-                                    <li><a href="https://github.com/Nolan180940/my-cloud">cloud_drive</a>，后端基于 GitHub。</li>
-                                </ul>
-                            </li>
-                            <li>我从其他人的代码库中 fork 了一些代码：（在此致以最诚挚的谢意）
-                                <ul>
-                                    <li><a href="https://github.com/Nolan180940/llm-examples">chatbot</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-
-                <blockquote>
-                    基本上，对于那些技术专家来说，你们可能会觉得上面这些代码库很愚蠢，但对于一个大一新生来说，这确实是一个非常大胆的尝试。（请给我一些掌声和鼓励！）
-                </blockquote>
-
-                <ul>
-                    <li>我坚信，未来将属于那些拥有跨学科特质的行业。我致力于人工智能+领域。（但别说我是个只会搞氛围编程的怪人……）</li>
-                    <li>我渴望在一个领域里投入无限的时间，因为你必须为此做好准备，并且不抱任何期望。但无论如何，只要你不后悔，那就是最好、最明智的选择。我相信人生是一场永无止境的旅程，而无限的探索将指引你前行。</li>
-                </ul>
-
-                <p>📫 联系我的最佳方式是发送 <a href="mailto:Alexander_123Wiggins@proton.me">电子邮件</a>。</p>
-            </div>
-        </div>
-        <!-- 插入的 Markdown 内容结束 -->
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-eyebrow">About me</div>
+    <h1 class="hero-name">Nolan <em>Xu</em></h1>
+    <p class="hero-tagline">
+      Student at NYU Shanghai '29, majoring in Data Science.<br>
+      Building at the intersection of <strong>AI × Finance × Code</strong>.
+    </p>
+    <div class="hero-pills">
+      <span class="pill pill-blue">📍 NYU Shanghai</span>
+      <span class="pill pill-teal">📊 Data Science</span>
+      <span class="pill pill-amber">🏎 Karting</span>
     </div>
+  </section>
 
-    <script>
-        // Update time every second
-        function updateTime() {
-            const now = new Date();
-            const timeString = now.toLocaleTimeString('en-US', { hour12: false });
-            document.getElementById('current-time').textContent = timeString;
-            document.getElementById('current-time-2').textContent = timeString;
-            document.getElementById('current-time-3').textContent = timeString;
-            document.getElementById('current-time-4').textContent = timeString;
-            document.getElementById('current-time-5').textContent = timeString;
-            document.getElementById('current-time-6').textContent = timeString;
-        }
+  <!-- Skills -->
+  <section class="section">
+    <div class="section-label">Languages & Tools</div>
+    <div class="skills-grid">
+      <span class="skill-chip">Python</span>
+      <span class="skill-chip">C++</span>
+      <span class="skill-chip">JavaScript</span>
+      <span class="skill-chip">HTML / CSS</span>
+      <span class="skill-chip">LaTeX</span>
+      <span class="skill-chip">Markdown</span>
+      <span class="skill-chip">Git</span>
+      <span class="skill-chip">SQL</span>
+      <span class="skill-chip">Cursor</span>
+    </div>
+  </section>
 
-        setInterval(updateTime, 1000);
-        updateTime(); // Initial call
-    </script>
+  <!-- Focus areas -->
+  <section class="section">
+    <div class="section-label">What I'm into</div>
+    <div class="cards cards-2">
+
+      <div class="card card-accent-blue">
+        <div class="card-icon">📈</div>
+        <div class="card-title">Quant Research</div>
+        <div class="card-body">
+          Amateur strategy researcher — purely out of curiosity, but seriously done. (Not open-sourced due to compliance.)
+          <ul>
+            <li>Mainstream trading styles research</li>
+            <li>Micro-cap stock quant strategies</li>
+            <li>Hedging strategies for IF &amp; IH</li>
+            <li>Micro-cap earthquake (Jan–Feb 2024)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="card card-accent-teal">
+        <div class="card-icon">💼</div>
+        <div class="card-title">Finance & Business</div>
+        <div class="card-body">
+          Member of <strong>TAMID Group</strong> — Asia Chapter, NYU Shanghai. Focused on equity analysis and stock valuation.
+          <br><br>
+          Career path: <strong>Data Science + AI + Finance</strong>.
+        </div>
+      </div>
+
+      <div class="card card-accent-amber card-span2">
+        <div class="card-icon">🗄️</div>
+        <div class="card-title">Data Engineering</div>
+        <div class="card-body">
+          Built a complete A-stock historical database sourced from akshare — with automated cleaning pipelines, incremental update mechanisms, and a structured SQL schema. Because why not?
+        </div>
+      </div>
+
+    </div>
+    <div class="callout">
+      As a freshman, these might look humble to veterans — but every single one is an audacious attempt. Please give some applause and encouragement! 🙌
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section class="section">
+    <div class="section-label">Repositories</div>
+    <div class="projects">
+      <a class="proj" href="https://github.com/Nolan180940/Nolan180940.github.io" target="_blank">
+        <span class="proj-num">01</span>
+        <span class="proj-name">personal_homepage</span>
+        <span class="badge badge-own">own</span>
+        <span class="proj-desc">Delicately crafted personal site</span>
+        <span class="proj-arrow">→</span>
+      </a>
+      <a class="proj" href="https://github.com/Nolan180940/md-to-word" target="_blank">
+        <span class="proj-num">02</span>
+        <span class="proj-name">markdown-to-docx_converter</span>
+        <span class="badge badge-own">own</span>
+        <span class="proj-desc">Streamlit-powered MD → Word</span>
+        <span class="proj-arrow">→</span>
+      </a>
+      <a class="proj" href="https://github.com/Nolan180940/blog" target="_blank">
+        <span class="proj-num">03</span>
+        <span class="proj-name">blog</span>
+        <span class="badge badge-own">own</span>
+        <span class="proj-desc">Full-stack · Supabase backend</span>
+        <span class="proj-arrow">→</span>
+      </a>
+      <a class="proj" href="https://github.com/Nolan180940/Notebook" target="_blank">
+        <span class="proj-num">04</span>
+        <span class="proj-name">convenient_online_notebook</span>
+        <span class="badge badge-own">own</span>
+        <span class="proj-desc">Ready-to-use, multi-format export</span>
+        <span class="proj-arrow">→</span>
+      </a>
+      <a class="proj" href="https://github.com/Nolan180940/my-cloud" target="_blank">
+        <span class="proj-num">05</span>
+        <span class="proj-name">cloud_drive</span>
+        <span class="badge badge-own">own</span>
+        <span class="proj-desc">GitHub-as-backend cloud storage</span>
+        <span class="proj-arrow">→</span>
+      </a>
+      <a class="proj" href="https://github.com/Nolan180940/llm-examples" target="_blank">
+        <span class="proj-num">06</span>
+        <span class="proj-name">chatbot</span>
+        <span class="badge badge-fork">fork</span>
+        <span class="proj-desc">LLM chatbot examples</span>
+        <span class="proj-arrow">→</span>
+      </a>
+    </div>
+    <div class="notice">
+      🏆 <strong>DIC Finalist</strong> — Digital Innovation Challenge, NYU Shanghai
+    </div>
+  </section>
+
+  <!-- Philosophy -->
+  <section class="section">
+    <div class="section-label">Philosophy</div>
+    <div class="philosophy">
+      <p>
+        I hold a firm belief that the future belongs to industries with <strong>multidisciplinary traits</strong>.
+        <strong>AI+</strong> is what I'm committed to — and no, I'm not just a vibe-coding wacko.
+      </p>
+      <p>
+        I'd love to devote infinite time to a field without expecting anything in return. As long as you don't regret it, that's the best and wisest choice. Life is an endless journey, guided by infinite exploration.
+      </p>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <div class="contact-bar">
+    <div>
+      <div class="contact-heading">Say hello 👋</div>
+      <div class="contact-sub">Best reached by email — always happy to connect.</div>
+    </div>
+    <a class="contact-btn" href="mailto:Alexander_123Wiggins@proton.me">
+      <span>📫</span> Send an email
+    </a>
+  </div>
+
+</div>
 </body>
 </html>
