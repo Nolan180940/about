@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nolan Xu — About</title>
+  <title>Nolan Xu — 个人主页</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Mono:wght@400;500&family=Noto+Serif+SC:wght@400;500;600&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css">
   <style>
     :root {
       --cream:   #faf8f4;
@@ -21,9 +21,9 @@
       --teal-lt: #f0fdfb;
       --amber:   #d97706;
       --amber-lt:#fffbeb;
-      --serif:   'DM Serif Display', Georgia, serif;
-      --sans:    'DM Sans', system-ui, sans-serif;
-      --mono:    'DM Mono', monospace;
+      --serif:   'Times New Roman', 'SimSun', 'Noto Serif SC', serif;
+      --sans:    'Times New Roman', 'SimSun', 'Noto Serif SC', serif;
+      --mono:    'Times New Roman', 'SimSun', 'Noto Serif SC', serif;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -108,11 +108,15 @@
       padding: 52px 0 0;
       animation: rise 0.6s cubic-bezier(0.22,1,0.36,1) both;
     }
-    .section:nth-child(2) { animation-delay: 0.07s; }
-    .section:nth-child(3) { animation-delay: 0.14s; }
-    .section:nth-child(4) { animation-delay: 0.21s; }
-    .section:nth-child(5) { animation-delay: 0.28s; }
-    .section:nth-child(6) { animation-delay: 0.35s; }
+    .section:nth-child(2) { animation-delay: 0.05s; }
+    .section:nth-child(3) { animation-delay: 0.10s; }
+    .section:nth-child(4) { animation-delay: 0.15s; }
+    .section:nth-child(5) { animation-delay: 0.20s; }
+    .section:nth-child(6) { animation-delay: 0.25s; }
+    .section:nth-child(7) { animation-delay: 0.30s; }
+    .section:nth-child(8) { animation-delay: 0.35s; }
+    .section:nth-child(9) { animation-delay: 0.40s; }
+    .section:nth-child(10) { animation-delay: 0.45s; }
 
     .section-label {
       font-family: var(--mono);
@@ -132,28 +136,10 @@
       background: var(--line);
     }
 
-    /* ── Skills ── */
-    .skills-grid { display: flex; flex-wrap: wrap; gap: 8px; }
-    .skill-chip {
-      font-family: var(--mono);
-      font-size: 0.8rem;
-      padding: 7px 15px;
-      background: var(--white);
-      border: 1px solid var(--line);
-      border-radius: 7px;
-      color: var(--charcoal);
-      transition: border-color 0.15s, color 0.15s, box-shadow 0.15s;
-      cursor: default;
-    }
-    .skill-chip:hover {
-      border-color: var(--blue);
-      color: var(--blue);
-      box-shadow: 0 2px 10px rgba(37,99,235,0.1);
-    }
-
     /* ── Cards ── */
     .cards { display: grid; gap: 14px; }
     .cards-2 { grid-template-columns: 1fr 1fr; }
+    .cards-3 { grid-template-columns: repeat(3, 1fr); }
     .card {
       background: var(--white);
       border: 1px solid var(--line);
@@ -177,6 +163,8 @@
       line-height: 1.7;
       font-weight: 300;
     }
+    .card-body p { margin-bottom: 8px; }
+    .card-body p:last-child { margin-bottom: 0; }
     .card-body ul { padding-left: 18px; margin-top: 8px; }
     .card-body li { margin: 4px 0; }
     .card-body strong { color: var(--ink); font-weight: 500; }
@@ -185,18 +173,86 @@
     .card-accent-amber { border-top: 3px solid var(--amber); }
     .card-span2 { grid-column: 1 / -1; }
 
-    /* ── Callout ── */
-    .callout {
-      border-left: 3px solid var(--amber);
-      background: var(--amber-lt);
-      padding: 14px 20px;
-      border-radius: 0 8px 8px 0;
-      font-size: 0.87rem;
-      color: #92400e;
-      font-style: italic;
-      line-height: 1.7;
-      margin-top: 16px;
+    /* ── Experience entries ── */
+    .exp-entry { padding: 14px 0; border-bottom: 1px dashed var(--line); }
+    .exp-entry:first-child { padding-top: 0; }
+    .exp-entry:last-child { border-bottom: none; padding-bottom: 0; }
+    .exp-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 6px;
     }
+    .exp-title { font-weight: 500; font-size: 0.92rem; color: var(--ink); }
+    .exp-date {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .exp-note {
+      font-size: 0.82rem;
+      color: var(--charcoal);
+      background: var(--teal-lt);
+      border-left: 3px solid var(--teal);
+      padding: 8px 12px;
+      border-radius: 0 6px 6px 0;
+      margin: 8px 0;
+      font-weight: 300;
+    }
+
+    /* ── Tables ── */
+    .table-wrap { overflow-x: auto; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    th {
+      text-align: left;
+      font-family: var(--mono);
+      font-size: 0.66rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 12px 14px;
+      border-bottom: 1.5px solid var(--line);
+      background: #f6f4ee;
+      white-space: nowrap;
+    }
+    td {
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--line);
+      color: var(--charcoal);
+      font-weight: 300;
+      vertical-align: top;
+    }
+    tr:last-child td { border-bottom: none; }
+    td a { color: var(--ink); font-weight: 500; text-decoration: none; }
+    td a:hover { color: var(--blue); }
+    td code { font-size: 0.8em; }
+
+    /* ── Inline code ── */
+    code {
+      font-family: var(--mono);
+      font-size: 0.85em;
+      background: #f1efe9;
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: var(--charcoal);
+    }
+
+    /* ── Stats ── */
+    .stats { display: flex; flex-direction: column; align-items: center; gap: 18px; }
+    .stats img { max-width: 100%; height: auto; }
+    .stats p { text-align: center; }
+    .badges-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
 
     /* ── Projects ── */
     .projects { display: flex; flex-direction: column; gap: 6px; }
@@ -224,19 +280,11 @@
       width: 20px;
       flex-shrink: 0;
     }
+    .proj-icon { font-size: 1.05rem; flex-shrink: 0; }
     .proj-name { font-weight: 500; font-size: 0.88rem; flex: 1; }
     .proj-desc { font-size: 0.78rem; color: var(--muted); font-weight: 300; }
     .proj-arrow { color: var(--line); font-size: 0.85rem; transition: color 0.15s; flex-shrink: 0; }
     .proj:hover .proj-arrow { color: var(--blue); }
-    .badge {
-      font-family: var(--mono);
-      font-size: 0.58rem;
-      padding: 2px 7px;
-      border-radius: 4px;
-      flex-shrink: 0;
-    }
-    .badge-own  { background: var(--teal-lt);  color: var(--teal);  border: 1px solid #99e6de; }
-    .badge-fork { background: #f5f5f5; color: var(--muted); border: 1px solid var(--line); }
 
     .notice {
       margin-top: 12px;
@@ -248,6 +296,29 @@
       color: var(--blue);
     }
     .notice strong { font-weight: 500; }
+
+    /* ── Callout ── */
+    .callout {
+      border-left: 3px solid var(--amber);
+      background: var(--amber-lt);
+      padding: 14px 20px;
+      border-radius: 0 8px 8px 0;
+      font-size: 0.87rem;
+      color: #92400e;
+      font-style: italic;
+      line-height: 1.7;
+      margin-top: 16px;
+    }
+
+    /* ── Stack icons ── */
+    .stack-icons {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+    .stack-icons img { max-width: 100%; height: auto; }
 
     /* ── Philosophy ── */
     .philosophy {
@@ -266,9 +337,11 @@
     .philosophy p:last-child { margin-bottom: 0; }
     .philosophy strong { color: var(--ink); font-weight: 500; }
 
-    /* ── Contact footer ── */
+    /* ── Contact ── */
+    .contact-badges { margin-bottom: 28px; text-align: center; }
+    .contact-badges img { max-width: 100%; height: auto; }
     .contact-bar {
-      margin-top: 56px;
+      margin-top: 8px;
       padding: 30px 32px;
       background: var(--ink);
       border-radius: 18px;
@@ -301,166 +374,195 @@
     }
     .contact-btn:hover { background: #e8e8ec; transform: scale(1.03); }
 
+    /* ── Footer note ── */
+    .footer-note {
+      margin-top: 28px;
+      text-align: center;
+      font-family: var(--mono);
+      font-size: 0.66rem;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+    }
+    .footer-note a { color: var(--muted); text-decoration: underline; }
+    .footer-note a:hover { color: var(--blue); }
+
     @media (max-width: 580px) {
-      .cards-2 { grid-template-columns: 1fr; }
+      .cards-2, .cards-3 { grid-template-columns: 1fr; }
       .card-span2 { grid-column: auto; }
       .proj-desc { display: none; }
       .contact-bar { flex-direction: column; align-items: flex-start; }
     }
+
   </style>
 </head>
 <body>
 <div class="page">
 
-  <!-- Hero -->
+
   <section class="hero">
-    <div class="hero-eyebrow">About me</div>
-    <h1 class="hero-name">Nolan <em>Xu</em></h1>
-    <p class="hero-tagline">
-      Student at NYU Shanghai '29, majoring in Data Science.<br>
-      Building at the intersection of <strong>AI × Finance × Code</strong>.
-    </p>
-    <div class="hero-pills">
-      <span class="pill pill-blue">📍 NYU Shanghai</span>
-      <span class="pill pill-teal">📊 Data Science</span>
-      <span class="pill pill-amber">🏎 Karting</span>
-    </div>
+    <div class="hero-eyebrow">你好，我是</div>
+    <h1 class="hero-name">Nolan Xu</h1>
+    <p class="hero-tagline"><strong>数据科学 × AI × 量化金融</strong> — 用数据与算法连接技术与真实世界</p>
+    <div class="hero-pills"><span class="pill pill-blue">🎓 NYU '29</span><span class="pill pill-teal">📊 数据科学 · AI 方向</span><span class="pill pill-amber">📊 数据科学</span><span class="pill pill-blue">🤖 AI</span><span class="pill pill-teal">📈 量化金融</span><span class="pill pill-amber">🌏 上海</span></div>
   </section>
-
-  <!-- Skills -->
   <section class="section">
-    <div class="section-label">Languages & Tools</div>
-    <div class="skills-grid">
-      <span class="skill-chip">Python</span>
-      <span class="skill-chip">C++</span>
-      <span class="skill-chip">JavaScript</span>
-      <span class="skill-chip">HTML / CSS</span>
-      <span class="skill-chip">LaTeX</span>
-      <span class="skill-chip">Markdown</span>
-      <span class="skill-chip">Git</span>
-      <span class="skill-chip">SQL</span>
-      <span class="skill-chip">Cursor</span>
-    </div>
+    <div class="section-label">👨‍💻 关于我</div>
+<div class="cards cards-3">
+<div class="card card-accent-blue card-span2">
+<div class="card-icon">👨‍💻</div>
+<div class="card-body">纽约大学（NYU Shanghai）数据科学专业 2029 届，深耕 <strong>量化金融 + AI 应用</strong>。我相信 <strong>Data Science + AI + Finance</strong> 是面向未来的复合并集。</div>
+</div>
+<div class="card"><div class="card-body">🎓 GPA 3.8/4.0 · 核心课程：概率统计 / 机器学习 / 数据结构</div></div>
+<div class="card"><div class="card-body">🧭 量化策略研究 · AI 应用开发 · 全栈工具链 · 开源探索</div></div>
+<div class="card"><div class="card-body">🌏 上海</div></div>
+</div>
   </section>
-
-  <!-- Focus areas -->
   <section class="section">
-    <div class="section-label">What I'm into</div>
-    <div class="cards cards-2">
-
-      <div class="card card-accent-blue">
-        <div class="card-icon">📈</div>
-        <div class="card-title">Quant Research</div>
-        <div class="card-body">
-          Amateur strategy researcher — purely out of curiosity, but seriously done. (Not open-sourced due to compliance.)
-          <ul>
-            <li>Mainstream trading styles research</li>
-            <li>Micro-cap stock quant strategies</li>
-            <li>Hedging strategies for IF &amp; IH</li>
-            <li>Micro-cap earthquake (Jan–Feb 2024)</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="card card-accent-teal">
-        <div class="card-icon">💼</div>
-        <div class="card-title">Finance & Business</div>
-        <div class="card-body">
-          Member of <strong>TAMID Group</strong> — Asia Chapter, NYU Shanghai. Focused on equity analysis and stock valuation.
-          <br><br>
-          Career path: <strong>Data Science + AI + Finance</strong>.
-        </div>
-      </div>
-
-      <div class="card card-accent-amber card-span2">
-        <div class="card-icon">🗄️</div>
-        <div class="card-title">Data Engineering</div>
-        <div class="card-body">
-          Built a complete A-stock historical database sourced from akshare — with automated cleaning pipelines, incremental update mechanisms, and a structured SQL schema. Because why not?
-        </div>
-      </div>
-
-    </div>
-    <div class="callout">
-      As a freshman, these might look humble to veterans — but every single one is an audacious attempt. Please give some applause and encouragement! 🙌
-    </div>
+    <div class="section-label">📊 Stats & Activity</div>
+<div class="stats">
+<div class="badges-row">
+<p><a href="https://github.com/Nolan180940?tab=repositories" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/公开仓库-47-2ea44f?style=for-the-badge&logo=github&logoColor=white" alt="公开仓库-47" loading="lazy" /></a> <a href="https://github.com/Nolan180940?tab=repositories" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/获Star-21-ffd700?style=for-the-badge&logo=github&logoColor=white" alt="获Star-21" loading="lazy" /></a> <a href="https://github.com/Nolan180940?tab=stars" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/Star过的仓库-292-ffd700?style=for-the-badge&logo=github&logoColor=white" alt="Star过的仓库-292" loading="lazy" /></a> <a href="https://github.com/Nolan180940?tab=followers" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/Followers-10-4285F4?style=for-the-badge&logo=github&logoColor=white" alt="Followers-10" loading="lazy" /></a></p>
+<p><a href="https://github.com/Nolan180940?tab=achievements" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/Starstruck-E3B341?style=for-the-badge&logo=github&logoColor=white" alt="GitHub 成就 Starstruck" loading="lazy" /></a> <a href="https://github.com/Nolan180940?tab=achievements" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/Pull%20Shark-4B8BBE?style=for-the-badge&logo=github&logoColor=white" alt="GitHub 成就 Pull Shark" loading="lazy" /></a> <a href="https://github.com/Nolan180940?tab=achievements" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/YOLO-6f42c1?style=for-the-badge&logo=github&logoColor=white" alt="GitHub 成就 YOLO" loading="lazy" /></a></p>
+<p><a href="https://github.com/Nolan180940" target="_blank" rel="noopener"><img src="https://komarev.com/ghpvc/?username=Nolan180940&label=Profile%20views&color=0e75b6&style=for-the-badge" alt="Profile views" loading="lazy" /></a></p>
+</div>
+<p align="center">
+  <a href="https://github.com/anuraghazra/github-readme-stats">
+    <img align="center" src="https://nanmicoder-readme-cards.vercel.app/api?username=Nolan180940&hide_border=true&bg_color=0D1117&title_color=58A6FF&icon_color=F8D866&show_icons=true" alt="GitHub Stats" />
+  </a>
+  <a href="https://github.com/anuraghazra/github-readme-stats">
+    <img align="center" src="https://nanmicoder-readme-cards.vercel.app/api/top-langs?username=Nolan180940&hide_border=true&bg_color=0D1117&title_color=58A6FF&icon_color=F8D866&layout=compact" alt="Top Languages" />
+  </a>
+</p>
+<p align="center">
+  <a href="https://github.com/DenverCoder1/github-readme-streak-stats">
+    <img src="https://streak-stats.demolab.com/?user=Nolan180940&theme=github-dark-blue&hide_border=true&short_numbers=true" alt="GitHub Streak" />
+  </a>
+</p>
+<p align="center">
+  <a href="https://github.com/ashutosh00710/github-readme-activity-graph">
+    <img src="https://github-readme-activity-graph.vercel.app/graph/?username=Nolan180940&bg_color=0D1117&color=F8D866&line=58A6FF&point=FFFFFF&hide_border=true" alt="GitHub Activity Graph" />
+  </a>
+</p>
+</div>
   </section>
-
-  <!-- Projects -->
   <section class="section">
-    <div class="section-label">Repositories</div>
-    <div class="projects">
-      <a class="proj" href="https://github.com/Nolan180940/Nolan180940.github.io" target="_blank">
-        <span class="proj-num">01</span>
-        <span class="proj-name">personal_homepage</span>
-        <span class="badge badge-own">own</span>
-        <span class="proj-desc">Delicately crafted personal site</span>
-        <span class="proj-arrow">→</span>
-      </a>
-      <a class="proj" href="https://github.com/Nolan180940/md-to-word" target="_blank">
-        <span class="proj-num">02</span>
-        <span class="proj-name">markdown-to-docx_converter</span>
-        <span class="badge badge-own">own</span>
-        <span class="proj-desc">Streamlit-powered MD → Word</span>
-        <span class="proj-arrow">→</span>
-      </a>
-      <a class="proj" href="https://github.com/Nolan180940/blog" target="_blank">
-        <span class="proj-num">03</span>
-        <span class="proj-name">blog</span>
-        <span class="badge badge-own">own</span>
-        <span class="proj-desc">Full-stack · Supabase backend</span>
-        <span class="proj-arrow">→</span>
-      </a>
-      <a class="proj" href="https://github.com/Nolan180940/Notebook" target="_blank">
-        <span class="proj-num">04</span>
-        <span class="proj-name">convenient_online_notebook</span>
-        <span class="badge badge-own">own</span>
-        <span class="proj-desc">Ready-to-use, multi-format export</span>
-        <span class="proj-arrow">→</span>
-      </a>
-      <a class="proj" href="https://github.com/Nolan180940/my-cloud" target="_blank">
-        <span class="proj-num">05</span>
-        <span class="proj-name">cloud_drive</span>
-        <span class="badge badge-own">own</span>
-        <span class="proj-desc">GitHub-as-backend cloud storage</span>
-        <span class="proj-arrow">→</span>
-      </a>
-      <a class="proj" href="https://github.com/Nolan180940/llm-examples" target="_blank">
-        <span class="proj-num">06</span>
-        <span class="proj-name">chatbot</span>
-        <span class="badge badge-fork">fork</span>
-        <span class="proj-desc">LLM chatbot examples</span>
-        <span class="proj-arrow">→</span>
-      </a>
-    </div>
-    <div class="notice">
-      🏆 <strong>DIC Finalist</strong> — Digital Innovation Challenge, NYU Shanghai
-    </div>
+    <div class="section-label">🔬 量化研究 · 当前重点项目</div>
+<div class="cards">
+<div class="card card-accent-blue">
+<div class="card-icon">🔬</div>
+<div class="card-body">
+<p>🚀 上海某私募基金 <strong>长期兼职量化研究员</strong>（实习转正，Return Offer），负责 <strong>因子挖掘与机器学习因子合成</strong>，核心成果闭源在 <a href="https://github.com/Nolan180940/Factor-Mining" target="_blank" rel="noopener"><strong>Factor-Mining</strong></a>。</p>
+<ul><li><strong>因子挖掘</strong>：基于 A 股因子数据库，随机搜索 + LightGBM / CatBoost / XGBoost / Ensemble 机器学习因子合成</li><li><strong>研究报告</strong>：<code>Documentation/</code> 下多篇 PDF 研究报告（数学推导 + 行为金融学逻辑 + 多宇宙回测）</li></ul>
+</div></div></div>
+<div class="callout">📌 部分研究细节因合规与保密协议不便公开，欢迎交流探讨。</div>
   </section>
-
-  <!-- Philosophy -->
   <section class="section">
-    <div class="section-label">Philosophy</div>
-    <div class="philosophy">
-      <p>
-        I hold a firm belief that the future belongs to industries with <strong>multidisciplinary traits</strong>.
-        <strong>AI+</strong> is what I'm committed to — and no, I'm not just a vibe-coding wacko.
-      </p>
-      <p>
-        I'd love to devote infinite time to a field without expecting anything in return. As long as you don't regret it, that's the best and wisest choice. Life is an endless journey, guided by infinite exploration.
-      </p>
-    </div>
+    <div class="section-label">🎯 简历一览</div>
+<div class="cards cards-2">
+<div class="card card-accent-blue card-span2">
+<div class="card-title">🧑‍💼 专业经历</div>
+<div class="card-body"><div class="exp-entry"><div class="exp-head"><span class="exp-title"><strong>量化研究实习生 · 上海某私募基金</strong></span><span class="exp-date">2025.12 – 2026.01</span></div></div><div class="exp-entry"><div class="exp-head"><span class="exp-title">- 微盘股量化策略（市值 + RSI 反转因子）研究</span><span class="exp-date"></span></div><ul><li>IF/IH 期货对冲策略（贴水因子）研究</li><li>2024 微盘股市场波动影响分析与关键风险因子识别</li><li>akshare 构建 A 股 SQL 数据库：自动化清洗与定时更新</li></ul></div><div class="exp-entry"><div class="exp-head"><span class="exp-title"><strong>兼职量化研究员（实习转长期）· 上海另一家私募</strong></span><span class="exp-date">2026.06 – 至今</span></div></div><div class="exp-entry"><div class="exp-head"><span class="exp-title">> 🏆 实习入职 → 获 <strong>Return Offer</strong> → 转长期兼职量化研究员，负责因子研究主线（详见上方 <a href="https://github.com/Nolan180940/Factor-Mining" target="_blank" rel="noopener">Factor-Mining</a> 章节）。</span><span class="exp-date"></span></div></div><div class="exp-entry"><div class="exp-head"><span class="exp-title"><strong>TAMID Group（上海分会）· 投资基金成员</strong></span><span class="exp-date">2025.02 – 至今</span></div></div><div class="exp-entry"><div class="exp-head"><span class="exp-title">- 股权估值课程（DCF / Comps）+ 内部股票推介赛，负责 <strong>Dynatrace (NYSE: DT)</strong> 的 DCF 建模与敏感性分析</span><span class="exp-date"></span></div></div></div>
+</div>
+<div class="card card-accent-teal card-span2">
+<div class="card-title">🤖 竞赛与项目</div>
+<div class="card-body"><div class="table-wrap"><table><thead><tr><th>项目</th><th>角色</th><th>内容</th></tr></thead><tbody><tr><td><strong>ETF Navigator — 可持续投资 AI Agent</strong>（DIC）</td><td>Lead Developer</td><td>实时金融 API 发现 ESG/清洁能源 ETF + LLM 新闻摘要与来源归因</td></tr><tr><td><strong>Autonomous Motivational Tutor Agent</strong>（DIC）</td><td>Contributor</td><td>情感处理单元（APU）+ 混合记忆（HMS）+ PHQ-9 情绪检测</td></tr><tr><td><strong>多传感器近视预防系统</strong></td><td>独立开发者</td><td>姿态/环境光传感器 + 嵌入式固件（Python/C），概念到原型</td></tr></tbody></table></div></div>
+</div>
+<div class="card card-accent-amber">
+<div class="card-title">🏅 教育背景</div>
+<div class="card-body"><ul><li><strong>NYU Shanghai</strong> — 数据科学学士（AI 方向），2029 届，GPA 3.8/4.0</li><li><strong>上海南洋模范中学</strong> — 高中；Y2022–2023 奖学金、2022 年度优秀学生</li></ul></div>
+</div>
+<div class="card ">
+<div class="card-title">🧰 技能</div>
+<div class="card-body"><ul><li><strong>语言</strong>：Python · SQL · JavaScript/TypeScript · C++ · HTML</li><li><strong>数据/ML</strong>：Pandas · NumPy · Polars · LightGBM · CatBoost · XGBoost · SHAP</li><li><strong>量化</strong>：多因子模型 · 因子挖掘 · 中性化 (CNE6) · 回测框架 · IC/IR 分析</li><li><strong>AI/前端</strong>：LLM 集成 · RAG · Streamlit · Next.js · Tailwind</li><li><strong>工具/语言</strong>：Git · Linux · LaTeX · Markdown | 中文（母语）· 英语（IELTS 7.5）</li></ul></div>
+</div>
+</div>
+  </section>
+  <section class="section">
+    <div class="section-label">📌 主页精选项目（Pinned）</div>
+<div class="projects">
+<a class="proj" href="https://github.com/Nolan180940/md-to-word" target="_blank" rel="noopener">
+<span class="proj-num">01</span>
+<span class="proj-icon">🛠️</span>
+<span class="proj-name">md-to-word</span>
+<span class="proj-desc">Markdown 转 Word 在线工具，支持 <strong>LaTeX 公式</strong>、AI 语法修复，免费免登录</span>
+<span class="proj-arrow">→</span>
+</a>
+<a class="proj" href="https://github.com/Nolan180940/Nolan180940.github.io" target="_blank" rel="noopener">
+<span class="proj-num">02</span>
+<span class="proj-icon">🏠</span>
+<span class="proj-name">Nolan180940.github.io</span>
+<span class="proj-desc">个人作品集主页</span>
+<span class="proj-arrow">→</span>
+</a>
+<a class="proj" href="https://github.com/Nolan180940/smg-f1-unlock--F1-" target="_blank" rel="noopener">
+<span class="proj-num">03</span>
+<span class="proj-icon">🏎️</span>
+<span class="proj-name">smg-f1-unlock--F1-</span>
+<span class="proj-desc">绕过版权看五星体育 F1 直播/回看（Console / Tampermonkey / 全自动脚本，逆向 Nuxt.js 拦截机制）</span>
+<span class="proj-arrow">→</span>
+</a>
+<a class="proj" href="https://github.com/Nolan180940/chatbot-demo" target="_blank" rel="noopener">
+<span class="proj-num">04</span>
+<span class="proj-icon">💬</span>
+<span class="proj-name">chatbot-demo</span>
+<span class="proj-desc">BYOK 聊天控制台（Next.js 14 + TS + Tailwind），配置三项参数即可连任意 OpenAI 兼容服务，已部署 Vercel</span>
+<span class="proj-arrow">→</span>
+</a>
+<a class="proj" href="https://github.com/Nolan180940/tutor-course-material" target="_blank" rel="noopener">
+<span class="proj-num">05</span>
+<span class="proj-icon">🎓</span>
+<span class="proj-name">tutor-course-material</span>
+<span class="proj-desc">高中生编程教学大纲（Python / AI 与大模型 / 实战项目 / DS 入门，Jupyter 讲义）</span>
+<span class="proj-arrow">→</span>
+</a>
+<a class="proj" href="https://github.com/Nolan180940/windows-simulator" target="_blank" rel="noopener">
+<span class="proj-num">06</span>
+<span class="proj-icon">🖥️</span>
+<span class="proj-name">windows-simulator</span>
+<span class="proj-desc">纯前端浏览器里的 Windows 11 桌面（窗口管理 + 7 个内置应用）</span>
+<span class="proj-arrow">→</span>
+</a>
+</div>
+  </section>
+  <section class="section">
+    <div class="section-label">🔥 最近更新 · Top 15 仓库</div>
+<div class="notice">📌 = Pinned；按最近更新时间排序</div>
+<div class="table-wrap"><table><thead><tr><th>仓库</th><th>语言</th><th>更新</th><th>一句话介绍</th></tr></thead><tbody><tr><td>📌 <a href="https://github.com/Nolan180940/tutor-course-material" target="_blank" rel="noopener">tutor-course-material</a></td><td>Jupyter</td><td>2026.08</td><td>编程教学讲义（含 AI / 大模型模块）</td></tr><tr><td>📌 <a href="https://github.com/Nolan180940/chatbot-demo" target="_blank" rel="noopener">chatbot-demo</a></td><td>TS</td><td>2026.08</td><td>BYOK 聊天控制台（Next.js + Tailwind）</td></tr><tr><td><a href="https://github.com/Nolan180940/dayjourney" target="_blank" rel="noopener">dayjourney</a></td><td>🐍</td><td>2026.08</td><td>电脑行为记录 → 本地知识库 → AI 人格助手（Electron + Python，local-first）</td></tr><tr><td>🔬 <a href="https://github.com/Nolan180940/Factor-Mining" target="_blank" rel="noopener">Factor-Mining</a></td><td>🐍</td><td>2026.08</td><td><strong>当前重点</strong>：A 股因子挖掘 + ML 因子合成</td></tr><tr><td>📌 <a href="https://github.com/Nolan180940/windows-simulator" target="_blank" rel="noopener">windows-simulator</a></td><td>JS</td><td>2026.08</td><td>纯前端 Windows 11 桌面模拟</td></tr><tr><td>📌 <a href="https://github.com/Nolan180940/smg-f1-unlock--F1-" target="_blank" rel="noopener">smg-f1-unlock--F1-</a></td><td>JS</td><td>2026.07</td><td>F1 直播版权解锁脚本 ⭐19</td></tr><tr><td><a href="https://github.com/Nolan180940/Wexport" target="_blank" rel="noopener">Wexport</a></td><td>TS</td><td>2026.07</td><td>WeFlow：微信聊天记录本地查看/分析/导出</td></tr><tr><td><a href="https://github.com/Nolan180940/my-cloud" target="_blank" rel="noopener">my-cloud</a></td><td>HTML</td><td>2026.07</td><td>网页版云盘（文件预览与编辑）</td></tr><tr><td><a href="https://github.com/Nolan180940/Claude-Code-Proxy-SiliconFlowCN" target="_blank" rel="noopener">Claude-Code-Proxy-SiliconFlowCN</a></td><td>JS</td><td>2026.07</td><td>把 Claude Code 转到 SiliconFlow 国产模型驱动的轻量代理</td></tr><tr><td><a href="https://github.com/Nolan180940/Intelligent-Distributed-Chat-System" target="_blank" rel="noopener">Intelligent-Distributed-Chat-System</a></td><td>🐍</td><td>2026.07</td><td>Socket + Tkinter + Ollama + TextBlob 智能分布式聊天</td></tr><tr><td>📌 <a href="https://github.com/Nolan180940/md-to-word" target="_blank" rel="noopener">md-to-word</a></td><td>🐍</td><td>2026.06</td><td>Markdown 转 Word 在线工具（LaTeX 公式）</td></tr><tr><td><a href="https://github.com/Nolan180940/SiliconFlow-NextChat" target="_blank" rel="noopener">SiliconFlow-NextChat</a></td><td>TS</td><td>2026.06</td><td>NextChat 的 SiliconFlow 接入部署</td></tr><tr><td><a href="https://github.com/Nolan180940/a_share_downloader" target="_blank" rel="noopener">a_share_downloader</a></td><td>🐍</td><td>2026.06</td><td>A 股数据下载：Yahoo + Tushare 多源、本地回测框架</td></tr><tr><td><a href="https://github.com/Nolan180940/Agent" target="_blank" rel="noopener">Agent</a></td><td>🐍</td><td>2026.06</td><td>AI Agent 探索实验</td></tr><tr><td><a href="https://github.com/Nolan180940/Jake-s-Resume-Generator" target="_blank" rel="noopener">Jake's-Resume-Generator</a></td><td>🐍</td><td>2026.06</td><td>Streamlit 表单 → LaTeX → PDF 简历生成器</td></tr></tbody></table></div>
+<div class="notice"><strong>更多</strong>：<code>DCF-Auto-Analysis</code>（DCF 估值仪表板）、<code>DIC04-AI_Finance</code>（NYU DIC 金融赛道）、<code>blog</code>、<code>chatbot</code> 等，欢迎翻阅 <a href="https://github.com/Nolan180940?tab=repositories" target="_blank" rel="noopener">全部 47 个仓库</a>。</div>
+<div class="notice">📌 口径说明：47 个仓库共收到 <strong>21 Stars</strong>；主页 "Stars 292" 是我 <strong>Star 过的仓库数</strong>，两者含义不同。</div>
+  </section>
+  <section class="section">
+    <div class="section-label">🛠️ 技术栈</div>
+<div class="stack-icons"><p align="center">
+  <a href="https://skillicons.dev">
+    <img src="https://skillicons.dev/icons?i=py,js,ts,cpp,html,css,postgres,sqlite,latex,md&theme=dark&perline=10" />
+  </a>
+</p></div>
+<div class="stack-icons"><p align="center">
+  <a href="https://skillicons.dev">
+    <img src="https://skillicons.dev/icons?i=nextjs,tailwind,nodejs,react,vite,fastapi,git,github,linux,pytorch,sklearn&theme=dark&perline=11" />
+  </a>
+</p></div>
+<div class="table-wrap"><table><thead><tr><th>领域</th><th>技能</th></tr></thead><tbody><tr><td><strong>语言</strong></td><td>Python · SQL · JavaScript/TypeScript · C++ · HTML</td></tr><tr><td><strong>数据/ML</strong></td><td>Pandas · NumPy · Polars · LightGBM · CatBoost · XGBoost · SHAP</td></tr><tr><td><strong>量化金融</strong></td><td>多因子模型 · 因子挖掘 · 中性化 (CNE6) · 回测框架 · IC/IR 分析</td></tr><tr><td><strong>AI/前端</strong></td><td>LLM 集成 · RAG · Streamlit · Next.js · Tailwind</td></tr></tbody></table></div>
+  </section>
+  <section class="section">
+    <div class="section-label">💭 理念</div>
+<div class="philosophy"><p><em>"未来属于具有跨学科特质的行业 —— <strong>数据科学 + AI + 金融</strong> 正是我坚持深耕的交汇点；让代码解决真实问题，让开源连接世界。"</em></p></div>
+  </section>
+  <section class="section">
+    <div class="section-label">📬 联系我</div>
+<div class="contact-badges"><p><a href="https://github.com/Nolan180940" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/GitHub-Nolan180940-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" loading="lazy" /></a> &nbsp; <a href="https://nolan180940.github.io/" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/个人主页-nolan180940.github.io-4285F4?style=for-the-badge&logo=google-chrome&logoColor=white" alt="个人主页" loading="lazy" /></a> &nbsp; <a href="mailto:Alexander_123Wiggins@proton.me" target="_blank" rel="noopener"><img src="https://img.shields.io/badge/Email-Alexander_123Wiggins%40proton.me-6d4aff?style=for-the-badge&logo=protonmail&logoColor=white" alt="Email" loading="lazy" /></a></p></div>
+<div class="contact-bar">
+<div>
+<div class="contact-heading">联系我 👋</div>
+<div class="contact-sub">对量化 / AI 应用 / 开源感兴趣？欢迎交流！🌟</div>
+</div>
+<a class="contact-btn" href="mailto:Alexander_123Wiggins@proton.me"><span>📫</span> 发邮件</a>
+</div>
   </section>
 
-  <!-- Contact -->
-  <div class="contact-bar">
-    <div>
-      <div class="contact-heading">Say hello 👋</div>
-      <div class="contact-sub">Best reached by email — always happy to connect.</div>
-    </div>
-    <a class="contact-btn" href="mailto:Alexander_123Wiggins@proton.me">
-      <span>📫</span> Send an email
-    </a>
+  <div class="footer-note">
+    由 <a href="https://github.com/Nolan180940/Nolan180940" target="_blank" rel="noopener">README.zh.md</a> 自动生成 · 最后同步 2026-08-29
   </div>
 
 </div>

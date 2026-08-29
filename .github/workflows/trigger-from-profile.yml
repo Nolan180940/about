@@ -1,0 +1,18 @@
+# ⚠️ 此文件需要复制到 Nolan180940/Nolan180940 仓库的 .github/workflows/ 目录下
+# 作用：当你 push README.zh.md 时，自动触发 about 仓库重新构建
+name: Trigger About Rebuild
+
+on:
+  push:
+    branches: [main]
+    paths: ['README.zh.md']
+
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: peter-evans/repository-dispatch@v3
+        with:
+          token: ${{ secrets.ABOUT_REPO_TOKEN }}
+          repository: Nolan180940/about
+          event-type: rebuild-about

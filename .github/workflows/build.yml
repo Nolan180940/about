@@ -1,0 +1,40 @@
+name: Build About Page
+
+on:
+  push:
+    branches: [main]
+    paths: ['scripts/**', 'README.zh.md']
+  workflow_dispatch:
+  repository_dispatch:
+    types: [rebuild-about]
+  schedule:
+    # 每天 UTC 02:00（北京时间 10:00）兜底同步一次
+    - cron: '0 2 * * *'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Build index.html from README.zh.md
+        run: python scripts/build.py
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          if git diff --cached --quiet; then
+            echo "No changes to index.html"
+          else
+            git commit -m "build: sync index.html from README.zh.md"
+            git push
+          fi
